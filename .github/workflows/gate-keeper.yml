@@ -9,7 +9,6 @@ jobs:
         name: Run on host
   container:
     runs-on: ubuntu-latest
-    container: docker:20.10.12-alpine3.15
     steps:
       # checkout v1 is used instead of v2 since the latter will
       # download the project from within the container instead of
