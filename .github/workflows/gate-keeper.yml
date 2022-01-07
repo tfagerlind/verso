@@ -3,6 +3,12 @@ on: [push]
 jobs:
   container:
     runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git --version
+        name: Run on host
+  container:
+    runs-on: ubuntu-latest
     container: docker:20.10.12-alpine3.15
     steps:
       # checkout v1 is used instead of v2 since the latter will
