@@ -9,7 +9,7 @@ jobs:
         name: Run on host
   container:
     runs-on: ubuntu-latest
-    steps:
+j    steps:
       # checkout v1 is used instead of v2 since the latter will
       # download the project from within the container instead of
       # being checked out by the host. The download will not contain
@@ -19,7 +19,6 @@ jobs:
       - uses: actions/checkout@v1
       - run: |
           # using make as a task runner
-          apk add make git
           ls -a
           ls -la .git
           pwd
