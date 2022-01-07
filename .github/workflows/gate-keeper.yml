@@ -16,5 +16,6 @@ jobs:
           # using make as a task runner
           apk add make
           ls -a
+          ls -la .git
           make test
         name: Run in container
