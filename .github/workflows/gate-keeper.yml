@@ -1,26 +1,9 @@
 name: Verso gate keeper pipeline
 on: [push]
 jobs:
-  host:
-    runs-on: ubuntu-16.04
-    steps:
-      - run: |
-          git --version
-        name: Run on host
-  container:
+  pipeline:
     runs-on: ubuntu-latest
     steps:
-      # checkout v1 is used instead of v2 since the latter will
-      # download the project from within the container instead of
-      # being checked out by the host. The download will not contain
-      # the .git directory which project-checker requires See
-      # https://github.com/actions/checkout/issues/126 for more
-      # information. Unclear how to solve this long term.
-      - uses: actions/checkout@v1
-      - run: |
-          # using make as a task runner
-          ls -a
-          ls -la .git
-          pwd
-          make test
-        name: Run in container
+      - uses: actions/checkout@v2
+      - run: make test
+
