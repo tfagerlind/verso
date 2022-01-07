@@ -5,10 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     container: docker:20.10.12-alpine3.15
     steps:
-      - uses: actions/checkout@v2
+      # checkout v1 is used instead of v2 since the latter will
+      # download the project from within the container instead of
+      # being checked out by the host. The download will not contain
+      # the .git directory which project-checker requires See
+      # https://github.com/actions/checkout/issues/126 for more
+      # information. Unclear how to solve this long term.
+      - uses: actions/checkout@v1
       - run: |
           # using make as a task runner
           apk add make
-          ls
-          ls -l
+          make test
         name: Run in container
