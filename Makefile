@@ -1,8 +1,12 @@
-.PHONY: syntax-check test
+.PHONY: project-check syntax-check test
 
-syntax-check:
+project-check:
+	docker run -v "${CURDIR}:/project" --rm tomologic/project-checker
+
+spell-check:
 	docker run --rm -t -v $(CURDIR):/workdir \
 		tmaier/markdown-spellcheck:latest --report "**/*.md"
 
-test: syntax-check
+syntax-check: project-check spell-check
 
+test: syntax-check
