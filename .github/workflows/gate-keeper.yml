@@ -1,7 +1,7 @@
 name: Verso gate keeper pipeline
 on: [push]
 jobs:
-  container:
+  host:
     runs-on: ubuntu-latest
     steps:
       - run: |
