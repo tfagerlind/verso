@@ -1,7 +1,7 @@
 .PHONY: project-check syntax-check test
 
 project-check:
-	docker run -v "${CURDIR}:/project" --rm tomologic/project-checker
+	docker run -v "$(CURDIR):/project" --rm tomologic/project-checker
 
 spell-check:
 	docker run --rm -t -v $(CURDIR):/workdir \
