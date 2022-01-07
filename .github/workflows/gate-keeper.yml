@@ -9,5 +9,6 @@ jobs:
       - run: |
           # using make as a task runner
           apk add make
-          make test
+          ls
+          ls -l
         name: Run in container
