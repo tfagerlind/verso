@@ -62,6 +62,16 @@ English.
 
 # Contributions
 
-Contributions are welcome.
+Contributions are welcome. All functionality must be covered by tests.
 
+# Prerequisites
 
+In order to test application locally Docker and Make must be
+installed.
+
+# How to test application
+
+Testing of Verso makes use of Make as a task runner. The following
+command runs all tests.
+
+    make test

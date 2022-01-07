@@ -1,0 +1,13 @@
+name: Verso gate keeper pipeline
+on: [push]
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    container: docker:20.10.12-alpine3.15
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          # using make as a task runner
+          apk add make
+          make test
+        name: Run in container
