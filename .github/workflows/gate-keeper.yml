@@ -17,5 +17,6 @@ jobs:
           apk add make git
           ls -a
           ls -la .git
+          pwd
           make test
         name: Run in container
