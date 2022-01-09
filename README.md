@@ -56,7 +56,8 @@ formats (such as Maven, Wheel, Npm, Conan). But one thing is sure, it
 is not advisable to implement the same functionality over and over
 again for every project that needs to be versioned and released. In
 order to maintain a SemVer-like versioning, the version must be
-incremented, and that kind of functionality is not trivial.
+incremented, and valid versions must be distinguished from invalid
+ones, and that kind of functionality is not trivial.
 
 Since a SemVer-like versioning has an order, the current version must
 somehow be stored; a state must be maintained. How this state is
