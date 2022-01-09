@@ -43,7 +43,7 @@ is the ability to identify the generation of a component, which
 simplifies understanding. It can be argued that true SemVer (including
 the distinction between major, minor, and patch versions), is
 sometimes over-kill for components, at least in small settings, hence
-the sloppy interpretaion of SemVer.
+the sloppy interpretation of SemVer.
 
 # Design
 
