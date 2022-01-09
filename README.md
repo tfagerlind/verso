@@ -52,7 +52,34 @@ what to generalize and what to leave to the user to
 specialize. Different users could have different source code
 management (such as Git, Mercurial or Subversion), different binary
 repositories (such as Artifactory or Nexus), and different release
-formats (such as Maven, Wheel, Npm, Conan).
+formats (such as Maven, Wheel, Npm, Conan). But one thing is sure, it
+is not advisable to implement the same functionality over and over
+again for every project that needs to be versioned and released. In
+order to maintain a SemVer-like versioning, the version must be
+incremented, and that kind of functionality is not trivial.
+
+Since a SemVer-like versioning has an order, the current version must
+somehow be stored; a state must be maintained. How this state is
+implemented is a matter of design. One can think of a state maintained
+by a binary repository or some database. In this project the source
+code management is used. Following the YAGNI design principle, Git
+will be used, and only Git. Supporting more version control systems
+could be a future improvement of this project. Using tags of Git is
+actually quite convenient since several birds are killed with one
+stone; tagging revisions that releases are based on is graceful.
+
+# Future improvements
+
+The current design automatically maintains the patch version while the
+major and minor part of the version is more or less permanent. A nice
+improvement would be to combine the automatic state with a state
+maintained by writing change log items in a CHANGELOG file. That way
+we would both have nice release notes and automatic versioning. The
+major could for example be identified by the CHANGELOG file, and the
+patch version could be automatically maintained. Using this approach
+would actually allow users to maintain a pure SemVer versioning by
+allowing users to write change logs for major and minors, while still
+use an automated versioning for patch versions.
 
 # Etymology
 
