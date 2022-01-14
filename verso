@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+"""Command line interface to Verso"""
+
+import logging
+import click
+from core.logic import Logic
+
+@click.group()
+def cli():
+    """Verso.
+
+    This application provides functionality for managing versioning.
+
+    """
+    logging.basicConfig(level=logging.INFO)
+
+@cli.command()
+def current_branch():
+    """Get the current branch of the project
+
+    Typically, for Git projects, the current branch is 'master',
+    'main', 'trunk' or something similar if the branch is the trunk of
+    the project. For pull requests or similar, the branch is generally
+    something else. For Git, only the user will can decide whether the
+    name of the branch denotes is the pure trunk of the project.
+
+    """
+    logic = Logic()
+    logic.get_current_branch()
+
+
+@cli.command("current-version")
+def current_version():
+    """Identify the current version of the project."""
+    logic = Logic()
+    logic.get_current_version()
+
+@cli.command("next-version")
+def next_version():
+    """Identify the next version of the project.
+
+    The next version is rather the next _generated_ version of the
+    project. If the current version is say 0.1.2, then the next
+    version is 0.1.3.
+
+    """
+    logic = Logic()
+    logic.get_next_version()
+
+@cli.command()
+@click.argument('version')
+def set_version(version):
+    """Set the version of the project.
+
+    For example, if the provided version is 0.1.2, then a Git tag
+    named v0.1.2 will be created in the project.
+
+    """
+    logic = Logic()
+    logic.set_version(version)
+
+
+if __name__ == '__main__':
+    cli()
