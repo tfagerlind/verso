@@ -18,7 +18,7 @@ dockerfile-check:
 	docker run --rm -i hadolint/hadolint < Dockerfile
 
 pylint-check: build
-	docker run --rm verso python -m pylint verso core
+	docker run --rm verso python -m pylint verso core setup.py
 
 flake8-check:
 	docker run --rm -v $(CURDIR):/apps alpine/flake8:3.5.0 .
