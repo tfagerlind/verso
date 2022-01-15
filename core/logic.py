@@ -17,11 +17,11 @@ class Logic:
 
     def get_current_version(self):
         """Get the current version."""
-        print("Not yet implemented.")
+        print("0.0.0")
 
     def get_next_version(self):
         """Get the next version."""
-        print("Not yet implemented.")
+        print("0.1.0")
 
     def set_version(self, version):
         """Sert the current version."""
