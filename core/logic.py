@@ -11,10 +11,6 @@ logger = logging.getLogger()
 class Logic:
     """Logic"""
 
-    def get_current_branch(self):
-        """Get the name of the current branch"""
-        print("Not yet implemented.")
-
     def get_current_version(self):
         """Get the current version."""
         print("0.0.0")
@@ -22,7 +18,3 @@ class Logic:
     def get_next_version(self):
         """Get the next version."""
         print("0.1.0")
-
-    def set_version(self, version):
-        """Sert the current version."""
-        print(f"Not yet implemented ({version}).")

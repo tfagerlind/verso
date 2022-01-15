@@ -30,14 +30,6 @@ setup() {
   git commit -m "add foofile"
 }
 
-@test "current branch" {
-  output=$(verso current-branch)
-  result=$?
-  echo "output: ${output}"
-  [ "$output" = "Not yet implemented." ]
-  [ "$result" = 0 ]
-}
-
 @test "current version is 0.0.0 if there are no tags" {
   output=$(verso current-version)
   result=$?
@@ -50,13 +42,5 @@ setup() {
   result=$?
   echo "output: ${output}"
   [ "$output" = "0.1.0" ]
-  [ "$result" = 0 ]
-}
-
-@test "set version" {
-  output=$(verso set-version 1.2.3)
-  result=$?
-  echo "output: ${output}"
-  [ "$output" = "Not yet implemented (1.2.3)." ]
   [ "$result" = 0 ]
 }
