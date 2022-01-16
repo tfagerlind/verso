@@ -16,24 +16,16 @@ setup() {
   touch foofile
   git add foofile
   git commit -m "add foofile"
-  popd
-}
-
-@test "Help message can be presented" {
-  ./verso --help | grep "Usage: verso \[OPTIONS\] COMMAND \[ARGS\]..."
 }
 
 @test "current version is 0.0.0 if there are no tags" {
-  output=$(./verso current-version)
-  result=$?
+  run -0 /app/verso current-version
+
   [ "$output" = "0.0.0" ]
-  [ "$result" = 0 ]
 }
 
 @test "next version is 0.1.0 if there are no tags" {
-  output=$(./verso next-version)
-  result=$?
-  echo "output: ${output}"
+  run -0 /app/verso next-version
+
   [ "$output" = "0.1.0" ]
-  [ "$result" = 0 ]
 }

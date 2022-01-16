@@ -21,6 +21,7 @@ setup() {
   # Configure Git
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
+  git config --global init.defaultBranch "trunk"
 
   # Prepare a git repository with one file and one commit
   cd $BATS_GIT_REPO_DIR

@@ -1,20 +1,42 @@
 """Provides the main logic of the application"""
 import logging
+import semver
 
 logger = logging.getLogger()
 
 
-# pylint: disable=no-self-use
-#
-# This disabling is temporary until the methods are fully implemented
+def get_current_version(tags):
+    """Get the current version.
 
-class Logic:
-    """Logic"""
+    Args:
+        tags(list): list of git tags
 
-    def get_current_version(self):
-        """Get the current version."""
-        print("0.0.0")
+    Returns:
+        string: A version that corresponds to the tag that represents
+                the last version.
 
-    def get_next_version(self):
-        """Get the next version."""
-        print("0.1.0")
+    """
+    versions = [tag[1:] for tag in tags]
+    valid_versions = [version
+                      for version
+                      in versions
+                      if semver.VersionInfo.isvalid(version)]
+    semver_versions = [semver.VersionInfo.parse(version)
+                       for version
+                       in valid_versions]
+    return str(max(semver_versions)) if semver_versions else "0.0.0"
+
+
+def get_next_version(tags):
+    """Get the next version."""
+    versions = [tag[1:] for tag in tags]
+    valid_versions = [version
+                      for version
+                      in versions
+                      if semver.VersionInfo.isvalid(version)]
+    semver_versions = [semver.VersionInfo.parse(version)
+                       for version
+                       in valid_versions]
+    return (str(max(semver_versions).bump_patch())
+            if semver_versions
+            else "0.1.0")
