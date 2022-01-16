@@ -3,7 +3,8 @@
 
 import logging
 import click
-from core.logic import Logic
+from git import Repo
+from core.logic import get_current_version, get_next_version
 
 @click.group()
 def cli():
@@ -14,11 +15,13 @@ def cli():
     """
     logging.basicConfig(level=logging.INFO)
 
+def _get_tags():
+    return [str(tag) for tag in Repo(".").tags]
+
 @cli.command("current-version")
 def current_version():
     """Identify the current version of the project."""
-    logic = Logic()
-    logic.get_current_version()
+    print(get_current_version(_get_tags()))
 
 @cli.command("next-version")
 def next_version():
@@ -29,8 +32,7 @@ def next_version():
     version is 0.1.3.
 
     """
-    logic = Logic()
-    logic.get_next_version()
+    print(get_next_version(_get_tags()))
 
 if __name__ == '__main__':
     cli()

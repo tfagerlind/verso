@@ -1,5 +1,5 @@
 .PHONY: build project-check makefile-check dockerfile-check syntax-check test
-.PHONY: smoke pylint-check filelint-check flake8-check
+.PHONY: smoke pylint-check filelint-check flake8-check unit-test
 
 build:
 	docker build -t verso .
@@ -18,7 +18,9 @@ dockerfile-check:
 	docker run --rm -i hadolint/hadolint < Dockerfile
 
 pylint-check: build
-	docker run --rm verso python -m pylint verso core setup.py
+	docker run --rm verso python -m pylint \
+		--ignore-patterns=test_.*\.py \
+		verso core setup.py
 
 flake8-check:
 	docker run --rm -v $(CURDIR):/apps alpine/flake8:3.5.0 .
@@ -26,7 +28,10 @@ flake8-check:
 syntax-check: project-check spell-check makefile-check dockerfile-check
 syntax-check: pylint-check filelint-check flake8-check
 
-system-test: build
-	docker run --rm verso bats system-test
+unit-test: build
+	docker run --rm verso pytest -rA .
 
-test: build syntax-check system-test
+system-test: build
+	docker run --rm verso bats --verbose-run system-test
+
+test: build syntax-check unit-test system-test

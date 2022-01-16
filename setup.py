@@ -30,4 +30,4 @@ setup(name='verso',
       version=get_version(),
       scripts=['verso'],
       packages=['core'],
-      install_requires=['click'])
+      install_requires=['click', 'semver', 'gitpython'])
