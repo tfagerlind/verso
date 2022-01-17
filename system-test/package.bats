@@ -11,7 +11,7 @@ setup() {
   # but also the package itself. Package tests catch for example
   # missing dependencies
   export VERSION=0.1.2
-  python -m build --wheel .
+  python -m build .
 
   # Install package in virtual environment
   python -m venv $BATS_RUN_TMPDIR/venv

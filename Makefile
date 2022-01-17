@@ -34,4 +34,10 @@ unit-test: build
 system-test: build
 	docker run --rm verso bats --verbose-run system-test
 
+package: build
+	[ -n "${VERSION}" ] # Environment variable VERSION must be set
+	docker run --rm -v /home/tomas/projects/verso/dist:/app/dist \
+		-e VERSION=${VERSION} verso:latest python -m build .
+
+
 test: build syntax-check unit-test system-test
