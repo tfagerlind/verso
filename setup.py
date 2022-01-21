@@ -1,5 +1,6 @@
 """Package specification."""
 import os
+from pathlib import Path
 from setuptools import setup
 
 
@@ -19,6 +20,18 @@ def get_version():
     return os.environ['VERSION']
 
 
+def get_readme():
+    """
+    Retrieve content of projects readme file.
+
+    Returns:
+        str: The content of README.md as a string.
+
+    """
+    readme_dir = Path(__file__).parent
+    return (readme_dir / "README.md").read_text()
+
+
 setup(name='verso',
       description='Verso provides functionality for managing versioning',
       url='https://github.com/tfagerlind/verso',
@@ -27,9 +40,12 @@ setup(name='verso',
           "License :: OSI Approved :: MIT License",
           "Operating System :: OS Independent",
       ],
+      license='MIT',
       maintainer='Tomas Fägerlind',
       maintainer_email='tomas.fagerlind@sofengi.com',
       version=get_version(),
+      long_description=get_readme(),
+      long_description_content_type='text/markdown',
       scripts=['verso'],
       packages=['core'],
       install_requires=['click', 'semver', 'gitpython'])

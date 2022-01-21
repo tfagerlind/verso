@@ -3,7 +3,7 @@
 Verso is an application aimed to simplify and standardize automatic
 versioning in a continuous delivery context.
 
-# Philosophy
+## Philosophy
 
 The idea with Verso is to reuse part of the functionality needed in
 order to implement Continuous Delivery.
@@ -45,7 +45,7 @@ the distinction between major, minor, and patch versions), is
 sometimes over-kill for components, at least in small settings, hence
 the sloppy interpretation of SemVer.
 
-# Design
+## Design
 
 The design of this project is not carved in stone. It is not obvious
 what to generalize and what to leave to the user to
@@ -69,7 +69,7 @@ could be a future improvement of this project. Using tags of Git is
 actually quite convenient since several birds are killed with one
 stone; tagging revisions that releases are based on is graceful.
 
-# Future improvements
+## Future improvements
 
 The current design automatically maintains the patch version while the
 major and minor part of the version is more or less permanent. A nice
@@ -82,29 +82,56 @@ would actually allow users to maintain a pure SemVer versioning by
 allowing users to write change logs for major and minors, while still
 use an automated versioning for patch versions.
 
-# Etymology
+## Etymology
 
 The name `Verso` is the result of playing with the word `version`, the
 literal meaning of the Italian word `verso` meaning `towards` in
 English.
 
-# Contributions
+## Installation (from PyPI)
+
+    pip install verso
+
+## Usage (after installation from PyPI)
+
+Get the current version of the Git project of the current directory:
+
+    verso current-version
+
+The command will go through all git tags of the format vX.Y.Z in the
+project, order them, and print the latest, without the prefix.
+
+Get the next version of the Git project of the current directory:
+
+    verso next-version
+
+The command will go through all git tags of the format vX.Y.Z in the
+project, order them, and print the latest but with the patch version
+increased by one.
+
+## Contributions
 
 Contributions are welcome. All functionality must be covered by tests.
 
-# Prerequisites
+## Prerequisites
 
 In order to test application locally Docker and Make must be
 installed.
 
-# How to test application
+## How to test application
 
 Testing of Verso makes use of Make as a task runner. The following
 command runs all tests.
 
     make test
 
-# How to release application
+## How to create a package
+
+    VERSION=X.Y.Z make package
+
+The package will end up in a folder named `dist`.
+
+## How to release application
 
     VERSION=X.Y.Z make upload-test
     VERSION=X.Y.Z make upload-prod
