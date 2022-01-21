@@ -103,3 +103,8 @@ Testing of Verso makes use of Make as a task runner. The following
 command runs all tests.
 
     make test
+
+# How to release application
+
+    VERSION=X.Y.Z make upload-test
+    VERSION=X.Y.Z make upload-prod

@@ -1,5 +1,6 @@
 .PHONY: build project-check makefile-check dockerfile-check syntax-check test
-.PHONY: smoke pylint-check filelint-check flake8-check unit-test
+.PHONY: smoke pylint-check filelint-check flake8-check unit-test upload-test
+.PHONY: upload-prod
 
 build:
 	docker build -t verso .
@@ -39,5 +40,13 @@ package: build
 	docker run --rm -v /home/tomas/projects/verso/dist:/app/dist \
 		-e VERSION=${VERSION} verso:latest python -m build .
 
+upload-test: package
+	docker run --rm -it -v $(CURDIR)/dist:/app/dist verso:latest \
+		twine upload \
+		--repository-url https://test.pypi.org/legacy/ dist/*
+
+upload-prod: package
+	docker run --rm -it -v $(CURDIR)/dist:/app/dist verso:latest \
+		twine upload dist/*
 
 test: build syntax-check unit-test system-test
