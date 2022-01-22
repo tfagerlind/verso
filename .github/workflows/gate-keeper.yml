@@ -1,3 +1,4 @@
+---
 name: Verso gate keeper pipeline
 on: [push]
 jobs:
