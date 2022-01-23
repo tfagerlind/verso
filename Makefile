@@ -13,7 +13,7 @@ spell-check:
 		tmaier/markdown-spellcheck:latest --report "**/*.md"
 
 yamllint-check:
-	docker run --rm -it -v $(CURDIR):/data cytopia/yamllint .
+	docker run --rm -v $(CURDIR):/data cytopia/yamllint .
 
 makefile-check:
 	docker run --rm -v $(CURDIR):/data cytopia/checkmake Makefile
