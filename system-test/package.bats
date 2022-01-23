@@ -13,7 +13,9 @@ setup() {
   export VERSION=0.1.2
   python -m build .
 
-  # Install package in virtual environment
+  # Install package in virtual environment in order to make sure
+  # that system installed dependencies are no available; that way
+  # the declared dependencies of the package are also tested.
   python -m venv $BATS_RUN_TMPDIR/venv
   source $BATS_RUN_TMPDIR/venv/bin/activate
   pip install dist/verso-${VERSION}-py3-none-any.whl
