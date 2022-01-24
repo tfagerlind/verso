@@ -6,7 +6,10 @@ RUN apk update && \
     # Transient dependencies of the twine python library.
     # Drawn from https://stackoverflow.com/a/53562393
     apk add --no-cache --virtual .build-deps \
-        gcc musl-dev python3-dev libffi-dev rust cargo openssl-dev
+        gcc musl-dev libffi-dev && \
+    pip install --disable-pip-version-check --no-cache-dir \
+        cryptography==36.0.1 && \
+    apk del .build-deps
 
 WORKDIR /app
 
