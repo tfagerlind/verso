@@ -40,7 +40,7 @@ system-test: build
 
 package: build
 	[ -n "${VERSION}" ] # Environment variable VERSION must be set
-	docker run --rm -v /home/tomas/projects/verso/dist:/app/dist \
+	docker run --rm -v $(CURDIR)/dist:/app/dist \
 		-e VERSION=${VERSION} verso:latest python -m build .
 
 upload-test: package
