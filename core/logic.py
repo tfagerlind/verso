@@ -20,7 +20,7 @@ def get_current_version(tags):
     valid_versions = [version
                       for version
                       in versions
-                      if semver.VersionInfo.isvalid(version)]
+                      if semver.VersionInfo.is_valid(version)]
     semver_versions = [semver.VersionInfo.parse(version)
                        for version
                        in valid_versions]
@@ -33,7 +33,7 @@ def get_next_version(tags):
     valid_versions = [version
                       for version
                       in versions
-                      if semver.VersionInfo.isvalid(version)]
+                      if semver.VersionInfo.is_valid(version)]
     semver_versions = [semver.VersionInfo.parse(version)
                        for version
                        in valid_versions]

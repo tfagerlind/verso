@@ -10,7 +10,8 @@ project-check:
 
 spell-check:
 	docker run --rm -t -v $(CURDIR):/workdir \
-		tmaier/markdown-spellcheck:latest --report "**/*.md"
+		tmaier/markdown-spellcheck:latest \
+			--ignore-numbers --report "**/*.md"
 
 yamllint-check:
 	docker run --rm -v $(CURDIR):/data cytopia/yamllint .
@@ -27,7 +28,7 @@ pylint-check: build
 		verso core setup.py
 
 flake8-check:
-	docker run --rm -v $(CURDIR):/apps alpine/flake8:3.5.0 .
+	docker run --rm -v $(CURDIR):/apps alpine/flake8:6.0.0 .
 
 syntax-check: project-check spell-check makefile-check dockerfile-check
 syntax-check: pylint-check filelint-check flake8-check yamllint-check

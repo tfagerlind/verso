@@ -4,6 +4,10 @@ from pathlib import Path
 from setuptools import setup
 
 
+class EnvException(Exception):
+    """Raised when the environment is not configured correctly."""
+
+
 def get_version():
     """
     Get version from context .
@@ -15,7 +19,7 @@ def get_version():
 
     """
     if 'VERSION' not in os.environ:
-        raise Exception("Environment variable VERSION must be set!")
+        raise EnvException("Environment variable VERSION must be set!")
 
     return os.environ['VERSION']
 
