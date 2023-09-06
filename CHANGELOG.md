@@ -1,8 +1,8 @@
 # 0.1.2
 
-* [SECURITY] Upgrade dependencies with vulnerabilities
-* [COMPATIBILITY] Upgrade transitive dependencies in order to be
-                  compatible with latest and greatest versions
+* [COMPATIBILITY] Adhere to API changes of SemVer dependency. From now
+                  on Verso will not be compatible with earlier versions
+                  of the Semver dependency.
 
 # 0.1.1
 
