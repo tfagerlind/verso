@@ -6,4 +6,8 @@
 
 # 0.1.1
 
+* [CLEANUP] Minor package improvements, such as adding readme.
+
+# 0.1.0
+
 Initial version
