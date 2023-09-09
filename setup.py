@@ -52,4 +52,6 @@ setup(name='verso',
       long_description_content_type='text/markdown',
       scripts=['verso'],
       packages=['core'],
-      install_requires=['click', 'semver', 'gitpython'])
+      install_requires=['click<9',
+                        'semver>=3,<4',
+                        'gitpython<4'])
