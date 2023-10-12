@@ -139,3 +139,5 @@ The package will end up in a folder named `dist`.
 
     VERSION=X.Y.Z make upload-test
     VERSION=X.Y.Z make upload-prod
+    git tag vX.Y.Z
+    git push origin vX.Y.Z
