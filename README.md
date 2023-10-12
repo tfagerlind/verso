@@ -112,10 +112,9 @@ increased by one.
 ## Contributions
 
 Contributions are welcome. All functionality must be covered by tests.
-A proper workflow for pull requests are [not yet in place](https://github.com/tfagerlind/verso/issues/4). In order to
-contribute just push to the trunk. Git actions will run tests automatically.
-
-    git push
+Contributions are made through pull requests only. Git actions will run tests
+automatically. Each pull request must be reviewed and approved by the maintainer
+of this project.
 
 ## Prerequisites
 
